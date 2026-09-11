@@ -91,7 +91,7 @@
         "beforePack": "scripts/build/beforePack.mjs",
         "afterPack": "scripts/build/afterPack.mjs",
         "linux": {
-            "icon": "build/icon.svg",
+            "icon": "build/icon.png",
             "category": "Network",
             "maintainer": "Slipcord <noreply@github.com>",
             "target": [
