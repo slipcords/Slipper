@@ -10,6 +10,4 @@ import { SESSION_DATA_DIR } from "./constants";
 import { State } from "./settings";
 
 // this is in a separate file to avoid circular dependencies
-export const VENCORD_DIR = State.store.slipcordDir
-    ? State.store.slipcordDir
-    : join(SESSION_DATA_DIR, "slipcord.asar");
+export const VENCORD_DIR = State.store.slipcordDir ? State.store.slipcordDir : join(SESSION_DATA_DIR, "slipcord.asar");
