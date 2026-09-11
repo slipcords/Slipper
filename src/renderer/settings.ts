@@ -41,7 +41,7 @@ interface TState {
     };
 }
 
-const stateKey = "EquibopState";
+const stateKey = "SlipperState";
 
 const currentState: TState = (() => {
     const stored = localStorage.getItem(stateKey);

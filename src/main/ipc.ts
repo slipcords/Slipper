@@ -61,7 +61,7 @@ if (IS_DEV) {
 
 handleSync(IpcEvents.GET_SETTINGS, () => Settings.plain);
 handleSync(IpcEvents.GET_VERSION, () => app.getVersion());
-handleSync(IpcEvents.GET_GIT_HASH, () => EQUIBOP_GIT_HASH);
+handleSync(IpcEvents.GET_GIT_HASH, () => SLIPPER_GIT_HASH);
 handleSync(IpcEvents.GET_ENABLE_HARDWARE_ACCELERATION, () => enableHardwareAcceleration);
 
 handleSync(
@@ -100,15 +100,15 @@ handle(IpcEvents.RELAUNCH, async () => {
     app.exit();
 });
 
-handleSync(IpcEvents.IS_USING_CUSTOM_VENCORD_DIR, () => !!State.store.equicordDir);
+handleSync(IpcEvents.IS_USING_CUSTOM_VENCORD_DIR, () => !!State.store.slipcordDir);
 handle(IpcEvents.SHOW_CUSTOM_VENCORD_DIR, async () => {
-    const { equicordDir } = State.store;
-    if (!equicordDir) return;
+    const { slipcordDir } = State.store;
+    if (!slipcordDir) return;
 
-    const stats = await stat(equicordDir);
+    const stats = await stat(slipcordDir);
     if (!stats.isDirectory()) return;
 
-    shell.openPath(equicordDir);
+    shell.openPath(slipcordDir);
 });
 
 function getWindow(e: IpcMainInvokeEvent, key?: string) {
@@ -151,7 +151,7 @@ handle(IpcEvents.SPELLCHECK_ADD_TO_DICTIONARY, (e, word: string) => {
 
 handle(IpcEvents.SELECT_VENCORD_DIR, async (_e, value?: null) => {
     if (value === null) {
-        delete State.store.equicordDir;
+        delete State.store.slipcordDir;
         return "ok";
     }
 
@@ -163,7 +163,7 @@ handle(IpcEvents.SELECT_VENCORD_DIR, async (_e, value?: null) => {
     const dir = res.filePaths[0];
     if (!isValidVencordInstall(dir)) return "invalid";
 
-    State.store.equicordDir = dir;
+    State.store.slipcordDir = dir;
 
     return "ok";
 });

@@ -216,7 +216,7 @@ export async function initTray(win: BrowserWindow, setIsQuitting: (val: boolean)
 
                 const pixmap = await getCachedTrayPixmap(trayVariant);
                 nativeSNI.setStatusNotifierIcon(pixmap);
-                nativeSNI.setStatusNotifierTitle("Equibop");
+                nativeSNI.setStatusNotifierTitle("Slipper");
 
                 const menuItems = [
                     { id: 1, label: win.isVisible() ? "Hide" : "Open", enabled: true, visible: true },
@@ -225,8 +225,8 @@ export async function initTray(win: BrowserWindow, setIsQuitting: (val: boolean)
                     { id: 5, label: "Launch Arguments", enabled: true, visible: true },
                     { id: 10, label: "Configure Rich Presence", enabled: true, visible: true },
                     { id: 12, type: "separator" as const, enabled: true, visible: true },
-                    { id: 3, label: "Repair Equicord", enabled: true, visible: true },
-                    { id: 4, label: "Reset Equibop", enabled: true, visible: true },
+                    { id: 3, label: "Repair Slipcord", enabled: true, visible: true },
+                    { id: 4, label: "Reset Slipper", enabled: true, visible: true },
                     { id: 7, type: "separator" as const, enabled: true, visible: true },
                     { id: 8, label: "Restart", enabled: true, visible: true },
                     { id: 9, label: "Quit", enabled: true, visible: true }
@@ -255,7 +255,7 @@ export async function initTray(win: BrowserWindow, setIsQuitting: (val: boolean)
                         case 2: // about
                             createAboutWindow();
                             break;
-                        case 3: // repair equicord
+                        case 3: // repair slipcord
                             downloadVencordAsar()
                                 .then(() => {
                                     setTimeout(() => {
@@ -265,14 +265,14 @@ export async function initTray(win: BrowserWindow, setIsQuitting: (val: boolean)
                                     }, 0);
                                 })
                                 .catch(err => {
-                                    console.error("[Tray] Repair Equicord failed:", err);
+                                    console.error("[Tray] Repair Slipcord failed:", err);
                                     dialog.showErrorBox(
-                                        "Repair Equicord failed",
-                                        `Could not download Equicord:\n\n${err instanceof Error ? err.message : String(err)}`
+                                        "Repair Slipcord failed",
+                                        `Could not download Slipcord:\n\n${err instanceof Error ? err.message : String(err)}`
                                     );
                                 });
                             break;
-                        case 4: // reset Equibop
+                        case 4: // reset Slipper
                             clearData(win);
                             break;
                         case 5: // launch arguments
@@ -336,15 +336,15 @@ export async function initTray(win: BrowserWindow, setIsQuitting: (val: boolean)
         },
         { type: "separator" },
         {
-            label: "Repair Equicord",
+            label: "Repair Slipcord",
             async click() {
                 try {
                     await downloadVencordAsar();
                 } catch (err) {
-                    console.error("[Tray] Repair Equicord failed:", err);
+                    console.error("[Tray] Repair Slipcord failed:", err);
                     dialog.showErrorBox(
-                        "Repair Equicord failed",
-                        `Could not download Equicord:\n\n${err instanceof Error ? err.message : String(err)}`
+                        "Repair Slipcord failed",
+                        `Could not download Slipcord:\n\n${err instanceof Error ? err.message : String(err)}`
                     );
                     return;
                 }
@@ -354,7 +354,7 @@ export async function initTray(win: BrowserWindow, setIsQuitting: (val: boolean)
             }
         },
         {
-            label: "Reset Equibop",
+            label: "Reset Slipper",
             async click() {
                 await clearData(win);
             }
@@ -380,7 +380,7 @@ export async function initTray(win: BrowserWindow, setIsQuitting: (val: boolean)
     try {
         const initialImage = await getCachedTrayImage(trayVariant);
         tray = new Tray(initialImage);
-        tray.setToolTip("Equibop");
+        tray.setToolTip("Slipper");
 
         if (isLinux) {
             tray.on("click", onTrayClick);

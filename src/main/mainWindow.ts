@@ -85,25 +85,25 @@ function initMenuBar(win: BrowserWindow) {
 
     const subMenu = [
         {
-            label: "About Equibop",
+            label: "About Slipper",
             click: createAboutWindow
         },
         {
-            label: "Force Update Equicord",
+            label: "Force Update Slipcord",
             async click() {
                 await downloadVencordAsar();
                 destroyTray();
                 app.relaunch();
                 app.quit();
             },
-            toolTip: "Equibop will automatically restart after this operation"
+            toolTip: "Slipper will automatically restart after this operation"
         },
         {
-            label: "Reset Equibop",
+            label: "Reset Slipper",
             async click() {
                 await clearData(win);
             },
-            toolTip: "Equibop will automatically restart after this operation"
+            toolTip: "Slipper will automatically restart after this operation"
         },
         {
             label: "Relaunch",
@@ -190,7 +190,7 @@ function initMenuBar(win: BrowserWindow) {
 
     const menuItems = [
         {
-            label: "Equibop",
+            label: "Slipper",
             role: "appMenu",
             submenu: subMenu.filter(isTruthy)
         },
@@ -299,7 +299,7 @@ function initStaticTitle(win: BrowserWindow) {
 
     addSettingsListener("staticTitle", enabled => {
         if (enabled) {
-            win.setTitle("Equibop");
+            win.setTitle("Slipper");
             win.on("page-title-updated", listener);
         } else {
             win.off("page-title-updated", listener);
@@ -404,7 +404,7 @@ function buildBrowserWindowOptions(): BrowserWindowConstructorOptions {
     }
 
     if (staticTitle) {
-        options.title = "Equibop";
+        options.title = "Slipper";
     }
 
     if (process.platform === "darwin") {

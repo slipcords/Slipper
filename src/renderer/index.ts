@@ -25,22 +25,22 @@ import type SettingsPlugin from "@equicord/types/plugins/_core/settings";
 import { VesktopSettingsIcon } from "shared/icons";
 
 VesktopLogger.log("read if cute :3");
-VesktopLogger.log(`Equibop v${VesktopNative.app.getVersion()}`);
+VesktopLogger.log(`Slipper v${VesktopNative.app.getVersion()}`);
 
 const { customEntries, customSections } = Vencord.Plugins.plugins.Settings as any as typeof SettingsPlugin;
 
 customEntries.push({
-    key: "equicord_equibop_settings",
-    title: "Equibop Settings",
+    key: "slipcord_slipper_settings",
+    title: "Slipper Settings",
     Component: SettingsUi,
     Icon: VesktopSettingsIcon
 });
 
 customSections.push(() => ({
-    section: "EquibopSettings",
-    label: "Equibop Settings",
+    section: "SlipperSettings",
+    label: "Slipper Settings",
     element: SettingsUi,
-    className: "vc-equibop-settings"
+    className: "vc-slipper-settings"
 }));
 
 VesktopNative.voice.onToggleSelfMute(() => VoiceActions.toggleSelfMute());
